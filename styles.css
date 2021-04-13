@@ -1,0 +1,84 @@
+.header{
+    background-color: rgb(56, 54, 54);
+    padding: 20px;
+}
+
+.header > h1{
+    text-align: center;
+    color: antiquewhite;
+    font-family: cursive;
+}
+.calc{
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color: rgb(39, 38, 38);
+    width: 350px;
+    height: 70vh;
+    box-shadow: 10px 10px gray;
+}
+
+.wrapper{
+    height: 67vh;
+    padding:1.5vh;
+}
+
+.display{
+    background-color: rgb(70, 70, 70);
+    height: 18vh;
+    color: aliceblue;
+    position: relative;
+}
+.currDisplay{
+    position: absolute;
+    top:2vh;
+    left: 1vw;
+    font-size: 3vh;
+}
+.numDisplay{
+    position: absolute;
+    bottom: 5vh;
+    right: 1vw;
+    font-size: 5vh;
+}
+.hidden{
+    display: none;
+}
+
+.btn-pad{
+    display: grid;
+    grid-template-columns: 71px 71px 71px 71px;
+    grid-gap: 1.5vh;
+    padding: 1.5vh;
+    background-color: white;
+    height: 46vh;
+}
+
+.btn{
+    color: rgb(230, 216, 216);
+    border-radius: 5px;
+    box-shadow: 3px 5px black;
+    text-align: center;
+    /* vertical-align: middle; */
+    padding: 1.5vh 0;
+    font-size: 4vh;
+    font-weight: bolder;
+}
+.btn:hover{
+    background-color: rgb(74, 67, 67);
+    color:black;
+    box-shadow: 3px 5px black;
+}
+.btn:active{
+    box-shadow: none;
+}
+
+.b-dark{
+    background-color: rgb(26, 21, 21);
+}
+.b-opr{
+    background-color: rgb(105, 93, 93);
+}
+.b-nums{
+    background-color: rgb(43, 36, 36);
+}
