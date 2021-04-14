@@ -8,51 +8,56 @@
     <title>Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-secondary">
-    <h1 class="text-center text-light my-2">Simple Calculator</h1>
+<body class="bg-secondary position-relative">
+    <h1 class="text-center text-light my-4">Simple Calculator</h1>
 
-    <div class="container p-1 m-auto">
-        
-        <div class="wrapper">
-            <div class="display">
-                <div class="currentValueDisplay"></div>
-                <div class="numberDisplay"></div>
+    <div class="wrapper d-flex bd-highlight flex-column m-auto p-3 rounded">
+        <div class="display bd-highlight border border-dark mb-2 rounded">
+            <div class="currentValueDisplay text-start p-2">1</div>
+            <div class="numberDisplay text-end fs-1 p-2 mx-1">0</div>
+        </div>
+
+        <div class="container bd-highlight d-grid gap-2 btnPad">
+            <div class="row gap-2">
+                <div class="col bg-dark py-1 text-light fw-bold btn b-action" data-action="ce" data-value="ce">CE</div>
+                <div class="col bg-dark py-1 text-light fw-bold btn b-action" data-action="c" data-value="c">C</div>
+                <div class="col bg-dark py-1 text-light fw-bold btn b-action" data-action="b" data-value="b">&rarr;</div>
+                <div class="col py-1 text-light fw-bold btn b-operate" data-action="operate" data-value=+>+</div>
             </div>
-            
-            <div class="row gx-2 gy-2 btn-pad">
-                <div class="col bg-primary btn b-dark" data-action="ce" data-value="ce">CE</div>
-                <div class="col bg-primary btn b-dark" data-action="c" data-value="c">C</div>
-                <div class="col bg-primary btn b-dark" data-action="b" data-value="b">&rarr;</div>
-                <div class="col bg-primary btn b-opr" data-action="opr" data-value=+>+</div>
-
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="1">1</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="2">2</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="3">3</div>
-                <div class="col bg-primary btn b-opr" data-action="opr" data-value="-">-</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="4">4</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="5">5</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="6">6</div>
-                <div class="col bg-primary btn b-opr" data-action="opr" data-value="*">&times;</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="7">7</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="8">8</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="9">9</div>
-                <div class="col bg-primary btn b-opr" data-action="opr" data-value="/">&divide;</div>
-                <div class="col bg-primary btn b-nums" data-action="-+" data-value="-+">-/+</div>
-                <div class="col bg-primary btn b-nums" data-action='type' data-value="0">0</div>
-                <div class="col bg-primary btn b-nums" data-action="." data-value=".">.</div>
-                <div class="col bg-primary btn b-dark" data-action="eq" data-value="=">=</div>
+            <div class="row gap-2">
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="1">1</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="2">2</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="3">3</div>
+                <div class="col py-1 text-light fw-bold btn b-operate" data-action="operate" data-value="-">-</div>
+            </div>
+            <div class="row gap-2">
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="4">4</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="5">5</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="6">6</div>
+                <div class="col py-1 text-light fw-bold btn b-operate" data-action="operate" data-value="*">&times;</div>
+            </div>
+            <div class="row gap-2">
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="7">7</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="8">8</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="9">9</div>
+                <div class="col py-1 text-light fw-bold btn b-operate" data-action="operate" data-value="/">&divide;</div>
+            </div>
+            <div class="row gap-2">
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="-+" data-value="-+">-/+</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="type" data-value="0">0</div>
+                <div class="col py-1 text-light fw-bold btn b-digits" data-action="." data-value=".">.</div>
+                <div class="col bg-dark py-1 text-light fw-bold btn b-action" data-action="equal" data-value="=">=</div>
             </div>
         </div>
 
     </div>
 
+    <p class="author text-center my-3">Code and design by Arshed Ahmed</p>
 
-    </div>
-
-    <script src="newcalc.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

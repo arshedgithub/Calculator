@@ -1,74 +1,31 @@
-.calc{
-    margin: auto;
-    margin-top: 50px;
-    border-radius: 10px;
-    background-color: rgb(39, 38, 38);
-    width: 350px;
-    height: 70vh;
-    box-shadow: 10px 10px gray;
-}
-
 .wrapper{
-    height: 67vh;
-    padding:1.5vh;
+    background-color: rgb(218, 250, 236);
+    max-width: 350px;
+    font-family: 'Times New Roman', Times, serif;
 }
-
-.display{
-    background-color: rgb(70, 70, 70);
-    height: 18vh;
-    color: aliceblue;
-    position: relative;
-}
-.currDisplay{
-    position: absolute;
-    top:2vh;
-    left: 1vw;
-    font-size: 3vh;
-}
-.numDisplay{
-    position: absolute;
-    bottom: 5vh;
-    right: 1vw;
+.btn{
     font-size: 5vh;
 }
-.hidden{
-    display: none;
-}
-
-.btn-pad{
-    display: grid;
-    grid-template-columns: 71px 71px 71px 71px;
-    grid-gap: 1.5vh;
-    padding: 1.5vh;
-    background-color: white;
-    height: 46vh;
-}
-
-.btn{
-    color: rgb(230, 216, 216);
-    border-radius: 5px;
-    box-shadow: 3px 5px black;
-    text-align: center;
-    /* vertical-align: middle; */
-    padding: 1.5vh 0;
-    font-size: 4vh;
-    font-weight: bolder;
-}
 .btn:hover{
-    background-color: rgb(74, 67, 67);
-    color:black;
-    box-shadow: 3px 5px black;
+    background-color: rgb(196, 189, 189);
+    color: black;
 }
-.btn:active{
-    box-shadow: none;
+.b-operate{
+    background-color: rgb(82, 94, 100);
+}
+.b-digits{
+    background-color: rgb(55, 56, 58);
 }
 
-.b-dark{
-    background-color: rgb(26, 21, 21);
+.author{
+    font-family: cursive;
 }
-.b-opr{
-    background-color: rgb(105, 93, 93);
-}
-.b-nums{
-    background-color: rgb(43, 36, 36);
+
+@media screen and (max-width: 370px) {
+    body{
+        padding: 2vh;
+    }
+    .btn{
+        font-size: 4vh;
+    }
 }
