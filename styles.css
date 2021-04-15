@@ -1,7 +1,11 @@
 .wrapper{
-    background-color: rgb(218, 250, 236);
+    background-color: rgb(222, 224, 224);
     max-width: 350px;
     font-family: 'Times New Roman', Times, serif;
+    box-shadow: 4px 4px 4px black;
+}
+.display{
+    background-color: rgb(231, 247, 246);
 }
 .btn{
     font-size: 5vh;

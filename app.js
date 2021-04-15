@@ -3,17 +3,19 @@ const currentValueDisplay = document.querySelector(".currentValueDisplay");
 const btnPad = document.querySelector(".btnPad");
 let currentOperand = numberDisplay.innerHTML;
 let savedOperand = '';
+let operator = '';
+let typing = true;
 
 btnPad.addEventListener('click', e => {
-    switch (e.target.getAttribute("data-action")) {
+    switch (e.target.dataset.action) {
         case 'type':
-            const digit = e.target.getAttribute("data-value");
+            const digit = e.target.dataset.value;
             typingDigits(digit);
             break;
 
         case 'operate':
-            const operator = e.target.getAttribute("data-value");
-            operate(operator);
+            operatorValue = e.target.dataset.value;
+            operate(operatorValue);
             break;
 
         case 'b':
@@ -29,32 +31,60 @@ btnPad.addEventListener('click', e => {
             break;
 
         case 'equal':
-            
+            value = e.target.dataset.value;
+            equalFunc(value);
             break;
     }
 
-})
+    currentValueDisplay.innerHTML = e.target.dataset.value;
+
+});
 
 const typingDigits = (digit) => {
+
     if (currentOperand.length == 13) {
         window.alert("This calculator can contains only 13 digits");
         return;
     }
 
-    currentValueDisplay.innerHTML = digit;
+    if (!typing) {
+        numberDisplay.innerHTML = '0';
+        typing = true;
+    }
+
     numberDisplay.innerHTML += digit;
+    numberDisplay.innerHTML = +(numberDisplay.innerHTML);  //  trim the leading 0 
     currentOperand = numberDisplay.innerHTML;
-    numberDisplay.innerHTML = +currentOperand;  //  trim the leading 0 
 }
 
-const operate = (operator) => {
-    savedOperand = currentOperand;
-    numberDisplay.innerHTML = '0';
-    currentOperand = '';
+const operate = (operatorValue) => {
+    typing = false;
+    
+    switch (operator) {
+        case '':
+            numberDisplay.innerHTML = currentOperand;
+            break;
 
-    if (operator == '+') {
-        console.log(savedOperand, currentOperand);
+        case '+':
+            // use parseInt and convert to integer for prevent string concatenation
+            numberDisplay.innerHTML = parseInt(savedOperand) + parseInt(currentOperand);
+            break;
+
+        case '-':
+            numberDisplay.innerHTML = savedOperand - currentOperand;
+            break;
+
+        case '*':
+            numberDisplay.innerHTML = savedOperand * currentOperand;
+            break;
+
+        case '/':
+            numberDisplay.innerHTML = savedOperand / currentOperand;
+            break;
     }
+
+    savedOperand = numberDisplay.innerHTML;
+    operator = operatorValue;
 }
 
 const backspace = () => {
@@ -74,5 +104,11 @@ const clear = () => {
 
 const clearAll = () => {
     clear();
+    savedOperand = '';
+    currentOperand = '';
+    operator = '';
+}
 
+const equalFunc = (value) => {
+    operate(value)
 }
