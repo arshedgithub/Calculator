@@ -7,6 +7,10 @@ let operator = '';
 let typing = true;
 
 btnPad.addEventListener('click', e => {
+    if (!e.target.getAttribute("class").includes("btn")) {
+        return;
+    }
+
     switch (e.target.dataset.action) {
         case 'type':
             const digit = e.target.dataset.value;
@@ -34,6 +38,15 @@ btnPad.addEventListener('click', e => {
             value = e.target.dataset.value;
             equalFunc(value);
             break;
+
+        case '.':
+            typingDecimals();
+            break;
+
+            case '-+':
+                changeSymbol();
+                break;
+
     }
 
     currentValueDisplay.innerHTML = e.target.dataset.value;
@@ -57,21 +70,40 @@ const typingDigits = (digit) => {
     currentOperand = numberDisplay.innerHTML;
 }
 
+const typingDecimals = () => {
+    // prevent typing multiple decimals
+    if (numberDisplay.innerHTML.includes('.')) {
+        return;
+    }
+    numberDisplay.innerHTML += '.';
+}
+
+const changeSymbol = () => {
+    const array = numberDisplay.innerHTML;
+    const firstCharacter = array.slice(0,1);
+    if (firstCharacter == '-') {
+        numberDisplay.innerHTML = array.slice(1,array.length)
+    } else {
+        numberDisplay.innerHTML = '-'+array
+    }
+}
+
 const operate = (operatorValue) => {
     typing = false;
-    
+
     switch (operator) {
         case '':
             numberDisplay.innerHTML = currentOperand;
             break;
 
         case '+':
-            // use parseInt and convert to integer for prevent string concatenation
+            // use parseInt and convert string to integer for prevent string concatenation
             numberDisplay.innerHTML = parseInt(savedOperand) + parseInt(currentOperand);
             break;
 
         case '-':
             numberDisplay.innerHTML = savedOperand - currentOperand;
+            currentOperand = '';
             break;
 
         case '*':
@@ -107,6 +139,7 @@ const clearAll = () => {
     savedOperand = '';
     currentOperand = '';
     operator = '';
+    typing = true;
 }
 
 const equalFunc = (value) => {
