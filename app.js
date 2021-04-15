@@ -7,7 +7,7 @@ let operator = '';
 let typing = true;
 
 btnPad.addEventListener('click', e => {
-    if (!e.target.getAttribute("class").includes("btn")) {
+    if (!e.target.getAttribute("class").includes("btn ")) {
         return;
     }
 
@@ -18,7 +18,7 @@ btnPad.addEventListener('click', e => {
             break;
 
         case 'operate':
-            operatorValue = e.target.dataset.value;
+            const operatorValue = e.target.dataset.value;
             operate(operatorValue);
             break;
 
@@ -43,9 +43,9 @@ btnPad.addEventListener('click', e => {
             typingDecimals();
             break;
 
-            case '-+':
-                changeSymbol();
-                break;
+        case '-+':
+            changeSymbol();
+            break;
 
     }
 
@@ -55,14 +55,14 @@ btnPad.addEventListener('click', e => {
 
 const typingDigits = (digit) => {
 
-    if (currentOperand.length == 13) {
-        window.alert("This calculator can contains only 13 digits");
-        return;
-    }
-
     if (!typing) {
         numberDisplay.innerHTML = '0';
         typing = true;
+    }
+
+    if (currentOperand.length == 13) {
+        window.alert("This calculator can contains only 13 digits");
+        return;
     }
 
     numberDisplay.innerHTML += digit;
@@ -80,16 +80,21 @@ const typingDecimals = () => {
 
 const changeSymbol = () => {
     const array = numberDisplay.innerHTML;
-    const firstCharacter = array.slice(0,1);
+    const firstCharacter = array.slice(0, 1);
     if (firstCharacter == '-') {
-        numberDisplay.innerHTML = array.slice(1,array.length)
+        numberDisplay.innerHTML = array.slice(1, array.length)
     } else {
-        numberDisplay.innerHTML = '-'+array
+        numberDisplay.innerHTML = '-' + array
     }
 }
 
 const operate = (operatorValue) => {
     typing = false;
+
+    if (operator == operatorValue && (currentOperand == '' || savedOperand == '')) {
+        numberDisplay.innerHTML = savedOperand;
+        return;
+    } 
 
     switch (operator) {
         case '':
@@ -98,12 +103,12 @@ const operate = (operatorValue) => {
 
         case '+':
             // use parseInt and convert string to integer for prevent string concatenation
-            numberDisplay.innerHTML = parseInt(savedOperand) + parseInt(currentOperand);
+            currentOperand = parseInt(currentOperand);
+            numberDisplay.innerHTML = parseInt(savedOperand) + currentOperand;
             break;
 
         case '-':
             numberDisplay.innerHTML = savedOperand - currentOperand;
-            currentOperand = '';
             break;
 
         case '*':
@@ -115,6 +120,7 @@ const operate = (operatorValue) => {
             break;
     }
 
+    currentOperand = '';
     savedOperand = numberDisplay.innerHTML;
     operator = operatorValue;
 }

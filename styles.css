@@ -1,22 +1,22 @@
 .wrapper{
-    background-color: rgb(222, 224, 224);
+    background-color: rgb(199, 212, 212);
     max-width: 350px;
     font-family: 'Times New Roman', Times, serif;
     box-shadow: 4px 4px 4px black;
 }
 .display{
-    background-color: rgb(231, 247, 246);
+    background-color: rgb(224, 228, 227);
 }
 .btn{
     font-size: 5vh;
     color: white;
     box-shadow: 3px 3px black;
 }
-.btn:hover{
+.btn:active{
     box-shadow: none;
-    background-color: rgb(196, 189, 189);
-    color: black;
+    background-color: rgb(187, 197, 195);
 }
+
 .b-operate{
     background-color: rgb(117, 124, 128);
 }
